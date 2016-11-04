@@ -29,7 +29,6 @@
     """,
     'depends' : ['base','purchase','hr','sale'],
     'data': [
-            'views/task1_view.xml',
     ],
 
     'installable': True,

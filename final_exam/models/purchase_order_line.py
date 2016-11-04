@@ -19,10 +19,11 @@ class sale_order(models.Model):
     _inherit = 'sale.order'
 
     def _cal_weight(self):
-        total_weight = 0
-        for each in self.order_line:
-            total_weight = total_weight + each.product_id.weight * each.product_uom_qty
-            self.total_weight = total_weight
+        new_total_weight = 0
+        for each_sale in self:
+            for each in each_sale.order_line:
+                new_total_weight = new_total_weight + each.product_id.weight * each.product_uom_qty
+            each_sale.total_weight=new_total_weight
 
     @api.onchange('partner_id')
     def onpartnerid_change(self):
