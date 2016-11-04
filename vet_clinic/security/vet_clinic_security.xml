@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="vet_clinic_grp" model="ir.module.category">
+            <field name="name">Vet Clinic Management</field>
+        </record>
+
+        <record id="student_access" model="res.groups">
+            <field name="name">Student</field>
+            <field name="category_id" ref="vet_clinic_grp"/>
+        </record>
+
+        <record id="teacher_access" model="res.groups">
+            <field name="name">Teacher</field>
+            <field name="category_id" ref="vet_clinic_grp"/>
+            <field name="implied_ids" eval="[(4, ref('student_access'))]"/>
+        </record>
+
+        <!--<record model="ir.ui.menu" id="vet_clinic.menu_vet_clinic_top">-->
+        <!--<field eval="[(4, ref('vet_clinic.student_access'))]" name="groups_id"/>-->
+    <!--</record>-->
+
+        <!--<record model="ir.ui.menu" id="vet_clinic.menu_vet_clinic">-->
+        <!--<field eval="[(4, ref('vet_clinic.student_access'))]" name="groups_id"/>-->
+    <!--</record>-->
+
+        <!--<record model="ir.ui.menu" id="vet_clinic.menu_vet_clinic_animal">-->
+        <!--<field eval="[(4, ref('vet_clinic.student_access'))]" name="groups_id"/>-->
+    <!--</record>-->
+
+        <!--<record model="ir.ui.view" id="vet_clinic.view_vet_clinic_animal_form">-->
+        <!--<field eval="[(4, ref('vet_clinic.student_access'))]" name="groups_id"/>-->
+    <!--</record>-->
+
+        <record model="ir.ui.view" id="vet_clinic.view_vet_clinic_labels_form">
+        <field eval="[(4, ref('vet_clinic.student_access'))]" name="implied_ids"/>
+    </record>
+
+        <!--<record model="ir.actions.act_window" id="vet_clinic.action_vet_clinic_animals">-->
+        <!--<field eval="[(4, ref('vet_clinic.student_access'))]" name="groups_id"/>-->
+    <!--</record>-->
+    </data>
+</openerp>

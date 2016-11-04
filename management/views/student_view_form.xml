@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--<template id="assets_backend" name="project assets" inherit_id="web.assets_backend">-->
+            <!--<xpath expr="." position="inside">-->
+                <!--<link rel="stylesheet" href="/management/static/src/css/school.css"/>-->
+                <!--<link rel="stylesheet" href="/management/static/src/css/office.css"/>-->
+            <!--</xpath>-->
+        <!--</template>-->
+        <menuitem name="School Management"
+                  id="menu_school_management"/>
+
+        <record id="view_student_tree" model="ir.ui.view">
+            <field name="name">student.tree</field>
+            <field name="model">student</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="student">
+                    <field name="image" widget="image"/>
+                    <field name="name"/>
+                    <field name="roll_no"/>
+                    <field name="address"/>
+                    <field name="pincode"/>
+                    <field name="telephone"/>
+                    <field name="teacher_id"/>
+                    <field name="achievement_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_student_form" model="ir.ui.view">
+            <field name="name">student.form</field>
+            <field name="model">student</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="student">
+                    <header>
+                        <button name="concatenate" string="Concatenate" type="object" class="btn-success"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box o_full" name="button_box">
+                            <button class="oe_stat_button" type="object" name="open_wizard" string="Open Wizard" icon="fa-globe">
+                            </button>
+                        </div>
+                        <group cols="4" colspan="4">
+                            <group cols="2">
+                                <field name="image" widget="image" string="Image"/>
+                                <field name="name" string="Student Name"/>
+                                <field name="address" required="1"/>
+
+                                <field name="pincode"/>
+                                <field name="telephone"/>
+                            </group>
+                            <group cols="2">
+                                <field name="birthdate"/>
+                                <field name="joindate"/>
+                                <field name="roll_no"/>
+                                <field name="stand"/>
+                                <field name="teacher_id"/>
+                                <field name="fees_amt"/>
+                                <field name="details"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Achievements">
+                                <field name="achievement_ids" widget="one2many"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="view_student_filter" model="ir.ui.view">
+            <field name="name">student.select</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <search string="Search Student_information">
+                    <field name="name" string="Name"/>
+                    <field name="roll_no"/>
+                    <field name="achievement_ids"/>
+                    <!-- <field name="active"/>
+                    <field name="address"/>
+                    <field name="pincode"/>
+                    <field name="telephone"/> -->
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_school_management" model="ir.actions.act_window">
+            <field name="name">Student</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_student_filter"/>
+            <field name="tree_view_id" ref="view_student_tree"/>
+            <field name="form_view_id" ref="view_student_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Student Information
+                </p><p>
+                Odoo will help you efficiently handle School Management.
+            </p>
+                <h1>
+                    Yo
+                </h1>
+            </field>
+        </record>
+
+        <!-- <record id="action_student_tree" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_student_tree"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>
+
+        <record id="action_student_form" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_student_form"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record> -->
+
+        <menuitem name="Students" id="menu_students" parent="menu_school_management"/>
+        <menuitem name="Student Records " action='action_school_management' id="menu_students_records" parent="menu_students"/>
+
+    </data>
+</openerp>    

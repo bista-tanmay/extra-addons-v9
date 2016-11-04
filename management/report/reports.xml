@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="student_records_report"
+                model="student"
+                report_type="qweb-pdf"
+                string="Student Records Report"
+                menu="True"
+                name="management.student_rec_report"
+                file="management.student_rec_report">
+            <!-- report name: foldername.template_id this id is of template -->
+        </report>
+
+        <report id="sale_report_inherit_qweb"
+        model="sale.order"
+        report_type="qweb-pdf"
+        string="Custom Quotation/Order"
+        name="management.report_sale_order_qweb"
+        file="management.report_sale_order_qweb"
+        />
+    </data>
+</openerp>

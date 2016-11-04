@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem name="School Management"
+            id="school_management.menu_school_management"/>
+        
+        <record id="view_teacher_tree" model="ir.ui.view">
+            <field name="name">teacher.tree</field>
+            <field name="model">teacher</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="teacher">
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="pincode"/>
+                    <field name="telephone"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_teacher_form" model="ir.ui.view">
+            <field name="name">teacher.form</field>
+            <field name="model">teacher</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="teacher">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="active_action" icon="fa-globe">
+                                <field name="active" widget="boolean_button"
+                                options='{"terminology": "active"}'/>
+                            </button>
+                        </div>
+                        <group>
+                        <field name="name" string="Teacher Name"/>
+                        <field name="address" required="1"/>
+                        <field name="pincode"/>
+                        <field name="telephone"/>
+                        </group>
+                        <group>
+                        <field name="birthdate"/>
+                        <field name="joindate"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_teacher_filter" model="ir.ui.view">
+            <field name="name">teacher.select</field>
+            <field name="model">teacher</field>
+            <field name="arch" type="xml">
+                <search string="Search teacher">
+                    <field name="name" string="Name"/>
+               </search>
+            </field>
+        </record>
+        
+        <record id="action_teacher_management" model="ir.actions.act_window">
+            <field name="name">teacher</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">teacher</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_teacher_filter"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a teachers 
+                </p><p>
+                    Odoo will help you efficiently handle School Management.
+                </p>
+            </field>
+        </record>
+<!--        <record id="action_teacher_tree" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_teacher_tree"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>
+
+        <record id="action_teacher_form" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_teacher_form"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>-->
+        
+        <menuitem name="Teachers" id="menu_teachers" parent="school_management.menu_school_management"/>
+        <menuitem name="Teacher Records " action='action_teacher_management' id="menu_teachers_records" parent="menu_teachers"/>
+
+    </data>
+</openerp>    

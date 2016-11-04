@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+        <menuitem id="menu_vet_clinic_top" name="Vet Clinic"/>
+
+        <record id="view_vet_clinic_animal_tree" model="ir.ui.view">
+            <field name="name">view_vet_clinic_animal.tree</field>
+            <field name="model">vet.clinic.animal</field>
+            <field name="arch" type="xml">
+                <tree string="Animals">
+                        <field name="name"/>
+                        <field name="birth_date"/>
+                        <field name="breed_id"/>
+                        <field name="res_partner_id"/>
+                        <field name="classification_id"/>
+                </tree>
+            </field>
+        </record>
+
+         <record id="view_vet_clinic_animal_vacination_tree" model="ir.ui.view">
+            <field name="name">view_vet_clinic_animal_vacination.tree</field>
+            <field name="model">vet.clinic.animal.vacination</field>
+            <field name="arch" type="xml">
+                <tree string="Vaccination">
+                        <field name="animal_id"/>
+                        <field name="product_id"/>
+                        <field name="due_date"/>
+                        <field name="date_performed"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_vet_clinic_animal_search">
+            <field name="name">animal.search</field>
+            <field name="model">vet.clinic.animal</field>
+            <field name="arch" type="xml">
+                <search string="Animal Search">
+                    <filter string="Dogs" name="animal_dogs" domain="[('classification_id','=','Dog')]"/>
+                    <filter string="Cats" name="animal_cats" domain="[('classification_id','=','Cat')]"/>
+                    <filter string="Birds" name="animal_dogs" domain="[('classification_id','=','Bird')]"/>
+                    <field name="name"/>
+                    <field name="breed_id"/>
+                    <group string="Group By">
+                        <filter name="classification" string="Classification" domain="[]" context="{'group_by':'classification_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_vet_clinic_animal_form" model="ir.ui.view">
+            <field name="name">view_vet_clinic_animal.form</field>
+            <field name="model">vet.clinic.animal</field>
+            <field name="arch" type="xml">
+                <form string="Animal">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="image" widget="image"/>
+                            <field name="birth_date"/>
+                            <field name="breed_id"/>
+                            <field name="classification_id"/>
+                            <field name="labels_ids" widget="many2many_tags"/>
+                            <field name="res_partner_id" domain="[('customer','=',True)]"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Animal History">
+                                <field name="history" nolabel="1" placeholder="Write history here..."/>
+                            </page>
+                            <page string="Vaccinations">
+                                <field name="animal_vacination_ids"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- -->
+
+        <record id="view_vet_clinic_classification_form" model="ir.ui.view">
+            <field name="name">view_vet_clinic_classification.form</field>
+            <field name="model">vet.clinic.classification</field>
+            <field name="arch" type="xml">
+                <form string="Classification">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Breeds">
+                                <field name="breed_ids" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- -->
+
+        <record id="view_vet_clinic_labels_tree" model="ir.ui.view">
+            <field name="name">view_vet_clinic_labels.tree</field>
+            <field name="model">vet.clinic.labels</field>
+            <field name="arch" type="xml">
+                <tree string="Labels">
+                        <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="base_view_partner_form" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Pets">
+                        <field name="animal_ids" colspan="4"/>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record id="view_vet_clinic_labels_form" model="ir.ui.view">
+            <field name="name">view_vet_clinic_labels.form</field>
+            <field name="model">vet.clinic.labels</field>
+            <field name="arch" type="xml">
+                <form string="Labels">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_vet_clinic_vaccination_calendar" model="ir.ui.view" >
+            <field name="name">view.vet.clinic.vaccination.calendar</field>
+            <field name="model">vet.clinic.animal.vacination</field>
+            <field name="arch" type="xml">
+                <calendar string="Vaccination" date_start="due_date" color="animal_id">
+                    <field name="animal_id"/>
+                    <field name="product_id"/>
+                </calendar>
+            </field>
+      </record>
+
+        <record id="action_vet_clinic_animals" model="ir.actions.act_window">
+            <field name="name">Animals</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vet.clinic.animal</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click create  to add a new animal record
+                </p>
+            </field>
+        </record>
+
+        <record id="action_vet_clinic_classification" model="ir.actions.act_window">
+            <field name="name">Classification</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vet.clinic.classification</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click create  to add a new classification record
+                </p>
+            </field>
+        </record>
+
+        <record id="action_vet_clinic_breed" model="ir.actions.act_window">
+            <field name="name">Breed</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vet.clinic.breed</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click create  to add a new breed record
+                </p>
+            </field>
+        </record>
+
+        <record id="action_vet_clinic_labels" model="ir.actions.act_window">
+            <field name="name">Labels</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vet.clinic.labels</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click create  to add a new label
+                </p>
+            </field>
+        </record>
+
+        <record id="action_vet_clinic_vaccination" model="ir.actions.act_window">
+            <field name="name">Vaccination</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vet.clinic.animal.vacination</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="view_id" ref="view_vet_clinic_animal_vacination_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click create  to add a new Vaccination record
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_vet_clinic" name="Vet Clinic" parent="menu_vet_clinic_top"/>
+        <menuitem id="menu_vet_clinic_animal" name="Animals" action="action_vet_clinic_animals" parent="menu_vet_clinic"/>
+        <menuitem id="menu_vet_clinic_classification" name="Classification" action="action_vet_clinic_classification" parent="menu_vet_clinic"/>
+        <menuitem id="menu_vet_clinic_breed" name="Breed" action="action_vet_clinic_breed" parent="menu_vet_clinic"/>
+        <menuitem id="menu_vet_clinic_labels" name="Labels" action="action_vet_clinic_labels" parent="menu_vet_clinic"/>
+        <menuitem id="menu_vet_clinic_vaccination" name="Vaccination" action="action_vet_clinic_vaccination" parent="menu_vet_clinic"/>
+    </data>
+</openerp>

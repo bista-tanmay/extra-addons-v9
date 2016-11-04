@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_priority_customer_form" model="ir.ui.view">
+            <field name="name">base.view_partner_form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                    <label for="street" position="before">
+                        <field name="is_priority" string="Priority Partner:"/>
+                        <field name="registration_date"  string="Registration Date :" attrs="{'invisible':[('is_priority','=',False)]}"/>
+                        <field name="liability_card_number" string="Liability Card Number :" attrs="{'required':[('is_priority','=',True)]}"/>
+                    </label>
+            </field>
+        </record>
+
+        <!--<record id="view_achievement_filter" model="ir.ui.view">-->
+            <!--<field name="model">res.partner</field>-->
+            <!--<field name="inherit_id" ref="base.view_res_partner_filter"/>-->
+        <!--</record>-->
+
+        <record id="action_priority_partner" model="ir.actions.act_window">
+            <field name="name">Priority Partner</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="domain">[('is_priority','=',True)]</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Let's See
+                </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+            </p>
+            </field>
+        </record>
+
+
+        <menuitem id="menu_priority_partner" action="action_priority_partner" name="Priority Partner" parent="menu_main_customer_liability" />
+    </data>
+</openerp>

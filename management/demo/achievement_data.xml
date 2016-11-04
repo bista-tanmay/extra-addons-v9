@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="achievement_1" model="achievement">
+            <field name="description">Swimming</field>
+            <field name="student_id" ref="management.student_1"/>
+        </record>
+    </data>
+</openerp>

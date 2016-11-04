@@ -1,0 +1,34 @@
+#### Pycharm Configuration Settings to Run Odoo ####
+
+#### Without Config File ####
+
+Script: /home/bista/Downloads/odoo-9.0c-20160809/odoo.py
+
+Script Parameters: --addons=/home/bista/Downloads/odoo-9.0c-20160809/openerp/addons,/home/bista/Downloads/odoo-9.0c-20160809/openerp/extra_addons
+
+Working Directory: /home/bista/Downloads/odoo-9.0c-20160809
+
+# Optionally add following to upgrade specific module
+
+--addons=/home/bista/Downloads/odoo-9.0c-20160809/openerp/addons,/home/bista/Downloads/odoo-9.0c-20160809/openerp/extra_addons -u <folder_name>
+
+E.g. --addons=/home/bista/Downloads/odoo-9.0c-20160809/openerp/addons,/home/bista/Downloads/odoo-9.0c-20160809/openerp/extra_addons -u vet_clinic
+
+#### Without Config File ####
+
+#### With Config File ####
+
+Script: /home/bista/Downloads/odoo-9.0c-20160809/openerp-server
+Script Parameters: --config=/home/bista/Downloads/odoo-9.0c-20160809/openerp-server.conf -u vet_clinic
+
+Working Directory: /home/bista/Downloads/odoo-9.0c-20160809
+
+# Optionally add following to upgrade specific module
+
+--config=/home/bista/Downloads/odoo-9.0c-20160809/openerp-server.conf -u <folder_name>
+
+E.g. --config=/home/bista/Downloads/odoo-9.0c-20160809/openerp-server.conf -u vet_clinic
+
+#### With Config File ####
+
+# Note: Path till odoo-9.0c-20160809/ can vary depending on location of files of installation & Operating System

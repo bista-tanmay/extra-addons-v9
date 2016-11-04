@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+        <record id="product_product_template_only_form_view" model="ir.ui.view">
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <field name="list_price" position="after">
+                    <field name="boat_length"/>
+                    <field name="fuel_capacity"/>
+                    <field name="model_options_id"/>
+                    <field name="variant_group_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="sale_view_order_form" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="boat_model_id"/>
+                </field>
+                <xpath expr="//field[@name='order_line']/form//field[@name='product_id']" position="attributes">
+                    <attribute name="context">{'boat_model_id': parent.boat_model_id}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form//field[@name='product_id']" position="after">
+                    <field name="variant_id" context="{'product_lookup': product_id}"/>
+                </xpath>
+                <xpath expr="//tree/field[@name='name']" position="after">
+                    <field name="variant_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_product_variant_form" model="ir.ui.view">
+            <field name="name">Product Variant</field>
+            <field name="model">product.variant</field>
+            <field name="arch" type="xml">
+                <form string="Product Variant">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="variant_group_id"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_product_variant_tree" model="ir.ui.view">
+            <field name="name">Product Variant</field>
+            <field name="model">product.variant</field>
+            <field name="arch" type="xml">
+                <tree string="Product Variant">
+                    <field name="name"/>
+                    <field name="variant_group_id"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_boat_variant_group" model="ir.actions.act_window">
+            <field name="name">Variant Groups</field>
+            <field name="res_model">product.variant.group</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_boat_variant" model="ir.actions.act_window">
+            <field name="name">Variant</field>
+            <field name="res_model">product.variant</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_boatcompany_variant_group" name="Variant Groups" parent="base.menu_sale_config" action="action_boat_variant_group"/>
+        <menuitem id="menu_boatcompany_variant" name="Variants" parent="base.menu_sale_config" action="action_boat_variant"/>
+    </data>
+</openerp>

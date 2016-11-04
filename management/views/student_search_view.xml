@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem name="School Management"
+            id="menu_school_management"/>
+        
+        <record id="view_student_search_tree" model="ir.ui.view">
+            <field name="name">student_search.tree</field>
+            <field name="model">student.search</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="name"/>
+                    <field name="roll_no"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_student_search_form" model="ir.ui.view">
+            <field name="name">student_search.form</field>
+            <field name="model">student.search</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="Student Search">
+                    <header>
+                    <button name="search_student_info" string="Search" type="object" class="btn-success"/>
+                    <button name="browse_student_info" string="Browse" type="object" class="btn-primary"/>
+                </header>
+                    <sheet>
+                        <group>
+                        <field name="name" string="Student Name"/>
+                        <field name="roll_no"/>
+                        <field name="details"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_search_management" model="ir.actions.act_window">
+            <field name="name">Student Search</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.search</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="tree_view_id" ref="view_student_search_tree"/>
+            <field name="form_view_id" ref="view_student_search_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Student Information
+                </p><p>
+                    Odoo will help you efficiently handle School Management.
+                </p>
+                <h1>
+                    Yo
+                </h1>
+            </field>
+        </record>
+<!--        <record id="action_student_tree" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_student_tree"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>
+
+        <record id="action_student_form" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_student_form"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>-->
+        
+        <menuitem name="Students" id="menu_students" parent="menu_school_management"/>
+        <menuitem name="Student Search" action='action_search_management' id="menu_students_search" parent="menu_students"/>
+
+    </data>
+</openerp>    

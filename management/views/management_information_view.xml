@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- <menuitem name="Office Management"
+            id="office_management.menu_office_management"/> -->
+        
+        <record id="view_management_information_tree" model="ir.ui.view">
+            <field name="name">management_information.tree</field>
+            <field name="model">management.information</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="management_information">
+                    <field name="name"/>
+                    <field name="city" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_management_information_form" model="ir.ui.view">
+            <field name="name">management_information.form</field>
+            <field name="model">management.information</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="management_information">
+                    <sheet>
+                        <group>
+                            <field name="name" string="Name"/>
+                            <field name="city" string="City"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_management_information_filter" model="ir.ui.view">
+            <field name="name">management_information.select</field>
+            <field name="model">management.information</field>
+            <field name="arch" type="xml">
+                <search string="Search management_information">
+                    <field name="name" string="Name"/>
+               </search>
+            </field>
+        </record>
+
+        <record id="action_management_info_management" model="ir.actions.act_window">
+            <field name="name">Management Information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">management.information</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_management_information_filter"/>
+            <field name="tree_view_id" ref="view_management_information_tree"/>
+            <field name="form_view_id" ref="view_management_information_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Management Information
+                </p><p>
+                    Odoo will help you efficiently handle Office Management.
+                </p>
+            </field>
+        </record>
+        
+        <!-- <menuitem name="Employee Master" id="menu_employee_master" parent="office_management.menu_office_management"/> -->
+        <menuitem name="Management Information" action='action_management_info_management' id="menu_management_information" parent="menu_employee_master"/>
+    </data>
+</openerp>    

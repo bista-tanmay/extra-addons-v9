@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--<template id="assets_backend" name="project assets" inherit_id="web.assets_backend">-->
+            <!--<xpath expr="." position="inside">-->
+                <!--<link rel="stylesheet" href="/office_management/static/src/css/office.css"/>-->
+            <!--</xpath>-->
+        <!--</template>-->
+        <menuitem name="Office Management"
+            id="menu_office_management"/>
+
+            <record id="view_employee_information_tree" model="ir.ui.view">
+                <field name="name">employee_information.tree</field>
+                <field name="model">employee.information</field>
+                <field name="priority">4</field>
+                <field name="arch" type="xml">
+                    <tree string="Employee" decoration-danger="emp_id!='False'">
+                        <field name="emp_id"/>
+                        <field name="name"/>
+                        <field name="city"/>
+                        <field name="pincode"/>
+                    </tree>
+                </field>
+            </record>
+
+            <record id="view_employee_information_form" model="ir.ui.view">
+                <field name="name">employee_information.form</field>
+                <field name="model">employee.information</field>
+                <field name="priority">4</field>
+                <field name="arch" type="xml">
+                    <form string="employee_information">
+                        <header>
+                            <button name="btn_new" icon="fa-plus-circle" string="New Button"
+                                type="action" class="btn-success"/>
+                            </header>
+                            <sheet>
+                                <group>
+                                    <field name="name" string="Name"/>
+                                    <field name="city" string="City"/>
+                                    <field name="pincode" string="Pincode"/>
+                                </group>
+                                <notebook>
+                                    <page string="Contact Information">
+                                        <group>
+                                            <field name="work_address" string="Work Address"/>
+                                            <field name="work_email" string="Work Email"/>
+                                            <field name="work_phone" string="Work Phone"/>
+                                            <field name="work_mobile" string="Work Mobile"/>
+                                            <field name="office_location" string="Office Location"/>
+                                            <field name="company_code" string="Company Code"/>
+                                        </group>
+                                    </page>
+                                    <page string="Personal Information">
+                                        <group colspan="2">
+                                            <field name="nationality" string="Nationality"/>
+                                            <field name="education_level" string="Educational Level"/>
+                                            <field name="college_name" string="College name"/>
+                                            <field name="date_of_birth" string="Date Of Birth"/>
+                                            <field name="place_of_birth" string="Place Of Birth" attrs="{'required': [('date_of_birth', '!=', False)]}"/>
+                                        </group>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </record>
+
+                <record id="view_employee_information_filter" model="ir.ui.view">
+                    <field name="name">employee_information.select</field>
+                    <field name="model">employee.information</field>
+                    <field name="arch" type="xml">
+                        <search string="Search employee_information">
+                            <field name="name" string="Name"/>
+                        </search>
+                    </field>
+                </record>
+
+                <record id="action_employee_management" model="ir.actions.act_window">
+                    <field name="name">Employee Information</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">employee.information</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="search_view_id" ref="view_employee_information_filter"/>
+                    <field name="tree_view_id" ref="view_employee_information_tree"/>
+                    <field name="form_view_id" ref="view_employee_information_form"/>
+                    <field name="help" type="html">
+                        <p class="oe_view_nocontent_create">
+                            Click to create a Employee Information
+                        </p><p>
+                        Odoo will help you efficiently handle Office Management.
+                    </p>
+                </field>
+            </record>
+
+            <!-- Status Bars -->
+
+            <record model="ir.ui.view" id="view_statusbar_form">
+                <field name="name">Statusbar</field>
+                <field name="model">statusbar.demo</field>
+                <field name="type">form</field>
+                <field name="arch" type="xml">
+                    <form string="Workflow record">
+                        <header>
+                            <button string="Set to concept" type="object" name="concept_progressbar" attrs="{'invisible': [('state', '=', 'concept')]}"/>
+                            <button string="Set to started" type="object" name="started_progressbar" class="oe_highlight" attrs="{'invisible': [('state','!=','concept')]}"/>
+                            <button string="In progress" type="object" name="progress_progressbar" attrs="{'invisible': [('state','=','progress')]}"/>
+                            <button string="Done" type="object" name="done_progressbar" attrs="{'readonly': [('state','=','finished')]}"/>
+                            <field name="state" widget="statusbar"/>
+                            <button name="%(action_employee_management)d" type="action" string="Call Employee" />
+                        </header>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </form>
+                </field>
+            </record>
+
+             <record id="action_statusbar_management" model="ir.actions.act_window">
+                    <field name="name">Statusbar</field>
+                    <field name="type">ir.actions.act_window</field>
+                    <field name="res_model">statusbar.demo</field>
+                    <field name="view_type">form</field>
+                    <field name="view_mode">tree,form</field>
+                    <field name="search_view_id" ref="view_employee_information_filter"/>
+                    <field name="help" type="html">
+                        <p class="oe_view_nocontent_create">
+                            Click to create a employee_informations 
+                        </p><p>
+                        Odoo will help you efficiently handle Office Management.
+                    </p>
+                </field>
+            </record>
+
+            <!-- Status Bars -->
+
+            <menuitem name="Employee Master" id="menu_employee_master" parent="menu_office_management"/>
+            <menuitem name="Employee Information" action='action_employee_management' id="menu_employee_information" parent="menu_employee_master"/>
+            <!-- <menuitem name="Status Bar Information" action='action_statusbar_management' id="menu_status_information" parent="menu_employee_master"/> -->
+        </data>
+    </openerp>    

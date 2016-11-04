@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_upload_file_form" model="ir.ui.view">
+            <field name="name">Upload File</field>
+            <field name="model">upload.file</field>
+            <field name="arch" type="xml">
+                <form string="Upload File">
+                    <sheet>
+                        <group>
+                            <field name="upload_file"/>
+                            <button string="Upload" name="upload_excel_file" type="object"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_upload_file_form" model="ir.actions.act_window">
+            <field name="name">Upload Files</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">upload.file</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,583 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* openacademy
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-10 06:58+0000\n"
+"PO-Revision-Date: 2014-01-10 06:58+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_openacademy_report
+msgid "Session Analysis"
+msgstr "Analyse de la séance"
+
+#. module: openacademy
+#: report:addons/openacademy/report/report_webkit_session.mako:56
+msgid "Attendee Details"
+msgstr ""
+
+#. module: openacademy
+#: code:addons/openacademy/openacademy.py:29
+#: sql_constraint:openacademy.course:0
+#, python-format
+msgid "Name must be unique!!"
+msgstr "Le nom doit être unique!"
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_openacademy_attendee
+#: field:openacademy.attendee,partner_id:0
+#: view:openacademy.session:0
+#: field:openacademy.session,attendee_ids:0
+#: field:openacademy.wiz,wiz_attendee_ids:0
+msgid "Attendee"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "March"
+msgstr ""
+
+#. module: openacademy
+#: report:openacademy.session:0
+msgid "Attendee Record:"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.session,message_unread:0
+msgid "Unread Messages"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.wiz:0
+msgid "Wizard openacademy"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.report,day:0
+msgid "Day"
+msgstr ""
+
+#. module: openacademy
+#: code:addons/openacademy/openacademy.py:85
+#, python-format
+msgid "Copy of %s"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.server,subject:openacademy.action_email_reminder_course
+msgid "Reminder on Course: [[object.name ]]"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.session,message_ids:0
+msgid "Messages"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Edit..."
+msgstr ""
+
+#. module: openacademy
+#: field:wiz.openacademy.attendee,wiz_id:0
+msgid "Wizard"
+msgstr ""
+
+#. module: openacademy
+#: help:openacademy.session,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.session,color:0
+msgid "Color Index"
+msgstr ""
+
+#. module: openacademy
+#: view:res.partner:0
+msgid "False"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Session gantt"
+msgstr ""
+
+#. module: openacademy
+#: report:addons/openacademy/report/report_webkit_session.mako:18
+#: view:board.board:0
+#: model:ir.actions.act_window,name:openacademy.action_openacademy_course
+#: model:ir.model,name:openacademy.model_openacademy_course
+#: model:ir.ui.menu,name:openacademy.menu_openacademy_course
+#: view:openacademy.course:0
+#: field:openacademy.report,course_id:0
+#: field:openacademy.session,course_id:0
+msgid "Course"
+msgstr "cours"
+
+#. module: openacademy
+#: help:openacademy.session,message_summary:0
+msgid "Holds the Chatter summary (number of messages, ...). This summary is directly in html format in order to be inserted in kanban views."
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.server,name:openacademy.action_email_reminder_course
+msgid "Reminder to Responsible"
+msgstr ""
+
+#. module: openacademy
+#: report:addons/openacademy/report/report_webkit_session.mako:27
+#: view:openacademy.report:0
+#: field:openacademy.report,remaining_seats:0
+#: field:openacademy.session,remaining_seats_count:0
+msgid "Available Seats"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_res_partner
+#: field:wiz.openacademy.attendee,partner_id:0
+msgid "Partner"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.session,active:0
+msgid "Active"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Sesison Graph"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Confirm"
+msgstr ""
+
+#. module: openacademy
+#: report:openacademy.session:0
+msgid "Date:"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.ui.menu,name:openacademy.report_openacademy
+msgid "Openacademy Analysis"
+msgstr ""
+
+#. module: openacademy
+#: report:addons/openacademy/report/report_webkit_session.mako:30
+msgid "State"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.report,date:0
+msgid "State Date"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.session,message_follower_ids:0
+msgid "Followers"
+msgstr ""
+
+#. module: openacademy
+#: code:addons/openacademy/openacademy.py:122
+#: sql_constraint:openacademy.attendee:0
+#, python-format
+msgid "partner must be unique per session!!"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.course:0
+#: view:openacademy.session:0
+msgid "Session Name"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.report.xml,name:openacademy.report_webkit_openacademy_session
+msgid "webkit Session Details"
+msgstr ""
+
+#. module: openacademy
+#: model:res.groups,name:openacademy.group_openacademy_user
+msgid "Openacademy User"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "July"
+msgstr ""
+
+#. module: openacademy
+#: report:addons/openacademy/report/report_webkit_session.mako:21
+#: field:openacademy.report,instructor_id:0
+#: field:openacademy.session,instructor_id:0
+#: field:res.partner,instructor:0
+msgid "Instructor"
+msgstr ""
+
+#. module: openacademy
+#: code:addons/openacademy/openacademy.py:102
+#, python-format
+msgid "Session is now <b>Confirmed</b>"
+msgstr ""
+
+#. module: openacademy
+#: model:res.groups,name:openacademy.group_openacademy_manager
+msgid "Openacademy Manager"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.act_window,name:openacademy.action_openacademy_session_graph
+msgid "Session Graph"
+msgstr ""
+
+#. module: openacademy
+#: report:openacademy.session:0
+msgid "Paterner Name"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.server,name:openacademy.action_course_open
+msgid "Open Course"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Delete"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "September"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "December"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.report:0
+msgid "Report Analysis"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.report,month:0
+msgid "Month"
+msgstr ""
+
+#. module: openacademy
+#: view:board.board:0
+#: model:ir.actions.act_window,name:openacademy.action_openacademy_session
+#: model:ir.model,name:openacademy.model_openacademy_session
+#: model:ir.ui.menu,name:openacademy.menu_openacademy_session
+#: field:openacademy.attendee,session_id:0
+#: view:openacademy.course:0
+#: field:openacademy.course,session_ids:0
+#: view:openacademy.session:0
+#: field:openacademy.wiz,session_id:0
+msgid "Session"
+msgstr ""
+
+#. module: openacademy
+#: report:addons/openacademy/report/report_webkit_session.mako:24
+#: field:openacademy.session,seats:0
+msgid "Seats"
+msgstr "sièges"
+
+#. module: openacademy
+#: field:openacademy.session,start_date:0
+msgid "Start Date"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.wiz:0
+msgid "or"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Session Calendar"
+msgstr ""
+
+#. module: openacademy
+#: report:addons/openacademy/report/report_webkit_session.mako:60
+msgid "Partner Name"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,state:0
+#: selection:openacademy.session,state:0
+msgid "Draft"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Group BY.."
+msgstr ""
+
+#. module: openacademy
+#: report:openacademy.session:0
+msgid "Session Name:"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.report,state:0
+#: field:openacademy.session,state:0
+msgid "Status"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "August"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "í"
+msgstr ""
+
+#. module: openacademy
+#: view:board.board:0
+msgid "Openacademy Board"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "June"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.session,message_is_follower:0
+msgid "Is a Follower"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Date"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "November"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.wiz:0
+msgid "cancel"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "October"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.session,attendee_count:0
+msgid "No of Attendee"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "January"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.session,message_summary:0
+msgid "Summary"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Course_id"
+msgstr ""
+
+#. module: openacademy
+#: view:board.board:0
+msgid "Graph Session"
+msgstr ""
+
+#. module: openacademy
+#: code:addons/openacademy/openacademy.py:95
+#, python-format
+msgid "Warning!!!"
+msgstr ""
+
+#. module: openacademy
+#: report:openacademy.session:0
+msgid "User Email:"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,state:0
+#: view:openacademy.session:0
+#: selection:openacademy.session,state:0
+msgid "Done"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_openacademy_wiz
+msgid "wizard for attendee"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,state:0
+#: view:openacademy.session:0
+#: selection:openacademy.session,state:0
+msgid "Cancel"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,state:0
+#: selection:openacademy.session,state:0
+msgid "Open"
+msgstr ""
+
+#. module: openacademy
+#: code:addons/openacademy/openacademy.py:96
+#, python-format
+msgid "Seats cannot be negative"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.course,responsible_id:0
+#: field:openacademy.report,responsible_id:0
+msgid "Responsible"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.act_window,name:openacademy.action_wiz_openacademy
+#: view:openacademy.session:0
+#: view:openacademy.wiz:0
+msgid "Register Attendee"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,state:0
+#: view:openacademy.session:0
+#: selection:openacademy.session,state:0
+msgid "Delay"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.server,message:openacademy.action_email_reminder_course
+msgid "Course is ready now create session for that.\n"
+"Name: [[object.name ]]\n"
+"ID: [[object.id ]]\n"
+"Course: [[object.course_id.name]]\n"
+"            "
+msgstr ""
+
+#. module: openacademy
+#: model:ir.ui.menu,name:openacademy.report_openacademy_menu
+msgid "Openacademy"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.course:0
+#: field:openacademy.course,description:0
+msgid "Description"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "May"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.model,name:openacademy.model_wiz_openacademy_attendee
+msgid "wiz.openacademy.attendee"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "instructor_id"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.act_window,name:openacademy.board_openacademy_dashboard
+#: model:ir.module.category,name:openacademy.openacademy_model_cateogry
+#: model:ir.ui.menu,name:openacademy.menu_dashboard_openacademy
+#: model:ir.ui.menu,name:openacademy.menu_openacademy_all
+#: model:ir.ui.menu,name:openacademy.menu_openacademy_main
+msgid "OpenAcademy"
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "February"
+msgstr ""
+
+#. module: openacademy
+#: report:addons/openacademy/report/report_webkit_session.mako:15
+#: report:addons/openacademy/report/report_webkit_session.mako:59
+#: field:openacademy.attendee,name:0
+#: field:openacademy.course,name:0
+#: report:openacademy.session:0
+#: field:openacademy.session,name:0
+#: field:wiz.openacademy.attendee,name:0
+msgid "Name"
+msgstr ""
+
+#. module: openacademy
+#: code:addons/openacademy/openacademy.py:28
+#: constraint:openacademy.course:0
+#, python-format
+msgid "Name and Description can not be same!!!"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.course:0
+msgid "Write a note here!!...."
+msgstr ""
+
+#. module: openacademy
+#: selection:openacademy.report,month:0
+msgid "April"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.act_window,name:openacademy.action_session_report_all
+msgid "openacademy Analysis"
+msgstr ""
+
+#. module: openacademy
+#: model:ir.actions.report.xml,name:openacademy.report_openacademy_session
+msgid "Session Details"
+msgstr ""
+
+#. module: openacademy
+#: help:openacademy.session,message_ids:0
+msgid "Messages and communication history"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.report:0
+#: field:openacademy.report,attendee_count:0
+msgid "# of Attendee"
+msgstr ""
+
+#. module: openacademy
+#: view:openacademy.session:0
+msgid "Search Session"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.report,year:0
+msgid "Year"
+msgstr ""
+
+#. module: openacademy
+#: field:openacademy.session,duration:0
+msgid "Duration"
+msgstr ""
+

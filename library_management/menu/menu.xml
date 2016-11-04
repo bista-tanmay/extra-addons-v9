@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_library" name="Library Management"/>
+
+        <menuitem id="menu_student" parent="menu_library" name="Student" />
+        <menuitem id="menu_student_records" parent="menu_student" name="Student Records" action="action_student_records"/>
+
+        <menuitem id="menu_course" parent="menu_library" name="Course" />
+        <menuitem id="menu_course_records" parent="menu_course" name="Course Records" action="action_course_records"/>
+
+        <menuitem id="menu_subject" parent="menu_library" name="Subject" />
+        <menuitem id="menu_subject_records" parent="menu_subject" name="Subject Records" action="action_subject_records"/>
+
+        <menuitem id="menu_teacher" parent="menu_library" name="Teacher" />
+        <menuitem id="menu_teacher_records" parent="menu_teacher" name="Teacher Records" action="action_teacher_records"/>
+    </data>
+</openerp>

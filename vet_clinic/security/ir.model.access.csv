@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vet_clinic_animal_student,Animal,vet_clinic.model_vet_clinic_animal,student_access,1,1,0,0
+access_vet_clinic_animal_teacher,Animal,vet_clinic.model_vet_clinic_animal,teacher_access,1,1,1,1
+access_vet_clinic_labels_student,Labels,vet_clinic.model_vet_clinic_labels,student_access,1,1,0,0
+access_vet_clinic_labels_teacher,Labels,vet_clinic.model_vet_clinic_labels,teacher_access,1,1,1,1

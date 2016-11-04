@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+        <record id="view_help_wizard_form" model="ir.ui.view">
+            <field name="name">view_help_wizard_form</field>
+            <field name="model">help.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Help Wizard form">
+                    <sheet>
+                        <group>
+                            <field name="models_id"/>
+                            <field name="name" invisible="1"/>
+                        </group>
+                        <button name="download_all_docs" string="Download Doc" type="object" class="btn-primary"/>
+                        <p>Your link for zip files will appear here: <field name="data" readonly="1" filename="name"/></p>
+                        <p>You will need a <b>ZIP archive manager</b> to view above file
+                        </p>
+                        <group>
+                            <field name="attachments" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_help_wizard" model="ir.actions.act_window">
+            <field name="name">Help Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">help.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_help_wizard_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <act_window id="act_legal_hist"
+                    name="LCM PDF Report"
+                    res_model="help.wizard"
+                    src_model="ir.attachment"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"/>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent -->
+        <menuitem id="menu_download_docs" name="Help" action="action_view_help_wizard"/>
+    </data>
+</openerp>

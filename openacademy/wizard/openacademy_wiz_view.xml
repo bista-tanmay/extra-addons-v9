@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+        <record model="ir.ui.view" id="view_wiz_openacademy_form">
+            <field name="name">wiz.openacademy.form</field>
+            <field name="model">openacademy.wiz</field>
+            <field name="arch" type="xml">
+                <form string="Wizard openacademy" version="7.0">
+                    <group>
+                        <field name="session_id"/>
+                    </group>
+                    <field name="wiz_attendee_ids"/>
+                    <footer>
+                        <button name="action_create_attendee" string="Register Attendee" type="object" class="oe_highlight"/>
+                        or
+                        <button string="cancel" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_wiz_openacademy">
+            <field name="name">Register Attendee</field>
+            <field name="res_model">openacademy.wiz</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    
+    </data>
+</openerp>

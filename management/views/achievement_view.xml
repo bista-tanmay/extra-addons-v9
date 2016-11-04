@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- <menuitem name="School Management"
+        id="school_management.menu_school_management"/> -->
+        
+        <record id="view_achievement_tree" model="ir.ui.view">
+            <field name="name">achievement.tree</field>
+            <field name="model">achievement</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="achievements">
+                    <field name="description"/>
+                    <field name="res_partner_id"/>
+                    <field name="employee_information_id"/>
+                    <field name="duration_of_event"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="base_view_partner_form" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Achievements">
+                        <field name="achievement_ids" colspan="4"/> 
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record id="management_view_employee_information_form" model="ir.ui.view">
+            <field name="model">employee.information</field>
+            <field name="inherit_id" ref="management.view_employee_information_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Achievements">
+                        <field name="achievement_ids" colspan="4"/> 
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+        <record id="view_achievement_form" model="ir.ui.view">
+            <field name="name">achievement.form</field>
+            <field name="model">achievement</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="Achievements">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button string="Start Event" type="object" class="oe_stat_button start" name="start_event" icon="fa-play"/>
+                            <!--<button string="In Progress" type="object" class="oe_stat_button" name="event_in_progress" icon="fa-refresh"/>-->
+                            <button string="Stop Event" type="object" class="oe_stat_button" name="end_event" icon="fa-stop"/>
+                        </div>
+                        <group>
+                            <field name="image" widget='image' />
+                            <field name="description"/>
+                            <field name="student_id"/>
+                            <field name="res_partner_id"/>
+                            <field name="employee_information_id"/>
+
+                            <label for="start_time" string="Start Time"/>
+                            <field name="start_time" class="text-success" nolabel="1"/>
+
+                            <label for="end_time" string="End Time"/>
+                            <field name="end_time" class="text-danger" nolabel="1"/>
+
+                            <label for="duration_of_event" string="Time Elapsed"/>
+                            <field name="duration_of_event" class="text-primary" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_achievement_kanban">
+            <field name="name">achievement.kanban</field>
+            <field name="model">achievement</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="description"/>
+                    <field name="student_id" widget="many2onebutton"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <strong>Achievement</strong>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span t-attf-class="pull-right label label-primary"><strong><field name="description"/></strong></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <strong>Student Name</strong>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span t-attf-class="pull-right label label-success"><strong><field name="student_id" /></strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_achievement_graph">
+            <field name="name">achievement.graph</field>
+            <field name="model">achievement</field>
+            <field name="arch" type="xml">
+                <graph string="Achievement">
+                    <field name="description"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="view_achievement_filter" model="ir.ui.view">
+            <field name="name">achievement.select</field>
+            <field name="model">achievement</field>
+            <field name="arch" type="xml">
+                <search string="Search achievements">
+                    <field name="description"/>
+                    <field name="student_id"/>
+                    <field name="res_partner_id"/>
+                    <field name="employee_information_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_achievement_management" model="ir.actions.act_window">
+            <field name="name">Achievement</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">achievement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,graph</field>
+            <field name="kanban_view_id" ref="view_achievement_kanban"/>
+            <field name="search_view_id" ref="view_achievement_filter"/>
+            <field name="tree_view_id" ref="view_achievement_tree"/>
+            <field name="form_view_id" ref="view_achievement_form"/>
+            <!--<field name="graph_view_id" ref="view_achievement_graph"/> -->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a achievementss 
+                </p><p>
+                Odoo will help you efficiently handle School Management.
+            </p>
+        </field>
+    </record>
+<!--        <record id="action_achievements_tree" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_achievements_tree"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>
+
+        <record id="action_achievements_form" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_achievements_form"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>-->
+        
+        <menuitem name="Achievements" id="menu_achievement" parent="menu_school_management"/>
+        <menuitem name="Achievements Records " action='action_achievement_management' id="menu_achievement_records" parent="menu_achievement"/>
+
+    </data>
+</openerp>    

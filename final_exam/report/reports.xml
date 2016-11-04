@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="purchase_custom_report"
+                model="purchase.order"
+                report_type="qweb-pdf"
+                string="Purchase Order Report"
+                menu="True"
+                name="final_exam.purchase_rec_report_call"
+                file="final_exam.purchase_rec_report_call">
+            <!-- report name: foldername.template_id this id is of template -->
+        </report>
+    </data>
+</openerp>

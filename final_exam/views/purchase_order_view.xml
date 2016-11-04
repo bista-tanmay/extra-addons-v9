@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="purchase_purchase_order_form" model="ir.ui.view">
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='product_id']" position="after">
+                    <field name="product_type"/>
+                </xpath>
+                <xpath expr="//tree/field[@name='product_id']" position="attributes">
+                    <attribute name="domain">[('type','=','product')]</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="hr_view_employee_form" model="ir.ui.view">
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <group>
+                        <field name="states"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_sale_order_line_wizard_form" model="ir.ui.view">
+            <field name="name">sale.order.line.wizard</field>
+            <field name="model">sale.order.line.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Sale Order Line">
+s                    <sheet>
+                         <div class="oe_button_box" name="button_box">
+                            <button type="object" class="oe_stat_button" icon="fa-plus" string="Create Order Line" name="add_sale_order_line"/>
+                        </div>
+                        <group>
+                            <field name="product_id" required="1"/>
+                            <field name="product_qty" required="1"/>
+                            <field name="unit_price" required="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sale_order_line_wizard" model="ir.actions.act_window">
+            <field name="name">Add A Product</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line.wizard</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_sale_order_line_wizard_form"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="sale_view_order_form" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_untaxed']" position="after">
+                    <field name="total_weight"/>
+                </xpath>
+                <!--<xpath expr="//field[@name='order_line']" position="attributes">-->
+                    <!--<attribute name="attrs">{'readonly':True}</attribute>-->
+                <!--</xpath>-->
+
+                <xpath expr="//field[@name='amount_untaxed']" position="after">
+                    <field name="is_company" attrs="{'invisible':True}"/>
+                </xpath>
+                <xpath expr="//field[@name='client_order_ref']" position="attributes">
+                    <attribute name="attrs">{'required':[('is_company','=',True)]}</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/div[@class='oe_button_box']" position="inside">
+                    <button type="action" class="oe_stat_button" icon="fa-list" string="Create Order Lines" name="%(final_exam.action_sale_order_line_wizard)d"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="action_state_new" model="ir.actions.act_window">
+            <field name="name">action_state_new</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('states','=','new')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <record id="action_state_probation" model="ir.actions.act_window">
+            <field name="name">action_state_probation</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('states','=','probation')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <record id="action_state_confirmed" model="ir.actions.act_window">
+            <field name="name">action_state_confirmed</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('states','=','confirmed')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <record id="action_state_terminated" model="ir.actions.act_window">
+            <field name="name">action_state_terminated</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('states','=','terminated')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <!--<field name="context">{"state" : "resigned",}</field>-->
+        <record id="action_state_resigned" model="ir.actions.act_window">
+            <field name="name">action_state_terminated</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('states','=','resigned')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+                </p>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="sale_view_sales_order_filter" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <filter string="Fully Invoiced" domain="[('invoice_status','=','invoiced')]"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="menu_state" name="State" parent="hr.menu_hr_root"/>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_state_new" name="New" parent="menu_state" action="action_state_new"/>
+        <menuitem id="menu_state_probation" name="Probation" parent="menu_state" action="action_state_probation"/>
+        <menuitem id="menu_state_confirmed" name="Confirmed" parent="menu_state" action="action_state_confirmed"/>
+        <menuitem id="menu_state_terminated" name="Terminated" parent="menu_state" action="action_state_terminated"/>
+        <menuitem id="menu_state_resigned" name="Resigned" parent="menu_state" action="action_state_resigned"/>
+    </data>
+</openerp>

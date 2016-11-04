@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="teacher_1" model="teacher">
+            <field name="name">Peter</field>
+            <field name="address">California</field>
+            <field name="pincode">400064</field>
+            <field name="telephone">23456789</field>
+        </record>
+    </data>
+</openerp>

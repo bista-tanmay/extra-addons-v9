@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="student_external_layout" inherit_id="report.external_layout_header">
+            <xpath expr="//div/div/div[@class='col-xs-3']" position="attributes">
+                <attribute name="class">pull-right</attribute>
+            </xpath>
+            <xpath expr="//div/div/div[@name='company_address']" position="attributes">
+                <attribute name="class">pull-right</attribute>
+            </xpath>
+        </template>
+        <!-- id: template_id this id should be same as name & file attribute in reports.xml or where you have defined all reports -->
+        <template id="student_rec_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <style>
+                                p{
+                                color:Red;
+                                margin:auto;
+                                padding:0;
+                                }
+
+                                .tans-table{
+                                border:2px double green;
+                                border-collapse:collapse;
+                                page-break-inside:avoid;
+                                }
+
+                                h3{
+                                color: Blue;
+                                }
+
+                                .tans-table th{
+                                padding:10px 10px;
+                                vertical-align:middle;
+                                color:Red;
+                                text-align:center;
+                                }
+
+                                .oe_avatar{
+                                width:200px;
+                                height:200px;
+                                }
+
+                                .tans-table td{
+                                padding:10px 10px;
+                                vertical-align:middle;
+                                text-align:center;
+                                }
+
+                            </style>
+                            <h2><span t-field="o.name"/>'s Report</h2>
+                            <p>This object's name is <span t-field="o.name"/></p>
+                            <div class="oe_avatar"><span t-field="o.image" t-field-options='{"widget":"image"}'/>
+                            </div>
+                            <table class="tans-table">
+                                <thead>
+                                    <th>Description</th>
+                                    <th>Partner ID</th>
+                                    <th>Employee ID</th>
+                                    <th>Taarik &amp; Waqt</th>
+                                    <th>get_current_time()</th>
+                                    <th>Kaccha get_data()</th>
+                                    <th>get_data()</th>
+                                </thead>
+                                <tbody>
+                                    <h3><span t-field="o.name"/>'s Achievements</h3>
+                                        <tr t-foreach="o.achievement_ids" t-as="i">
+                                            <td>
+                                                <span t-field="i.description"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="i.res_partner_id"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="i.employee_information_id"/>
+                                            </td>
+                                            <td><span t-esc="o.hello()" />
+                                            </td>
+                                            <td>
+                                                <span t-esc="get_current_time()"/>
+                                            </td>
+                                            <td>
+                                                <span t-raw="get_data()"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="get_data()"/>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="purchase_order_report_new" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//div[@class='page']/div[@class='row mt32 mb32']/div/strong" position="replace">
+                <strong>Your Purchase</strong>
+            </xpath>
+        </template>
+    </data>
+</openerp>

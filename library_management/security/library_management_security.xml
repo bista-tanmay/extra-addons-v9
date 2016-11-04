@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.module.category" id="library_management_model_category">
+            <field name="name">Library Management</field>
+        </record>
+
+        <record id="group_library_management_student" model="res.groups">
+            <field name="name">Library Student</field>
+            <field name="category_id" ref="library_management_model_category"/>
+        </record>
+
+        <record id="group_library_management_teacher" model="res.groups">
+            <field name="name">Library Teacher</field>
+            <field name="implied_ids" eval="[(4, ref('library_management.group_library_management_student'))]"/>
+            <field name="category_id" ref="library_management_model_category"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <record model="ir.rule" id="stud_group_access">
+            <field name="name">student</field>
+            <field name="model_id" ref="model_student_records"/>
+            <field name="domain_force">[('user_id','=',user.id)]</field>
+        </record>
+    </data>
+</openerp>

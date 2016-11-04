@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+        <record id="view_attachments_tree" model="ir.ui.view">
+            <field name="name">view.attachments.tree</field>
+            <field name="model">help.wizard.data</field>
+            <field name="arch" type="xml">
+                <tree name="Attachments" delete="false">
+                    <field name="attachment_data" filename="attachment_name"/>
+                    <field name="attachment_name" invisible="1" class="oe_inline oe_right"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="wizard_store_attachments_action" model="ir.actions.act_window">
+            <field name="name">Show Attachments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">help.wizard.data</field>
+            <field name="view_type">tree</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_attachments_tree"/>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

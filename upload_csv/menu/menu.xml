@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <menuitem id="menu_upload" name="Upload Excel File" action="action_view_upload_file_form"/>
+
+    </data>
+</openerp>

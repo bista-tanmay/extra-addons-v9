@@ -1,0 +1,80 @@
+<openerp>
+    <data>
+
+        <record id="view_priority_table_form" model="ir.ui.view">
+            <field name="name">priority_table.form</field>
+            <field name="model">priority.table</field>
+            <field name="arch" type="xml">
+                <form string="Priority Table Form">
+                    <sheet>
+                        <group>
+                            <field name="res_partner_id"/>
+                            <field name="name"/>
+                            <field name="set_priority"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_priority_table_tree" model="ir.ui.view">
+            <field name="name">priority_table.tree</field>
+            <field name="model">priority.table</field>
+            <field name="arch" type="xml">
+                <tree string="Priority Table Tree" editable="bottom">
+                    <field name="name"/>
+                    <field name="set_priority"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="base_view_partner_form" model="ir.ui.view">
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Priorities">
+                        <group>
+                            <field name="res_priority_table" nolabel="1"/>
+                        </group>
+                    </page>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="action_priority_records" model="ir.actions.act_window">
+            <field name="name">Priority Records</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">priority.table</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click here
+              </p><p>
+                All Work &amp; No Odoo Makes Jack A Error Boy
+              </p>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="sale_view_order_form" model="ir.ui.view">
+            <field name="name">sale_view_order_form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="priority_table_id" attrs="{'readonly':[('state','not in',('draft','sent'))]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <!--<menuitem id="menu_priority_table" name="Priority Table" sequence=""/>-->
+
+        <!-- This Menu Item must have a parent and an action -->
+        <!--<menuitem id="menu_priority_records" name="Priority Records" parent="menu_priority_table" action="action_priority_records"/>-->
+
+    </data>
+</openerp>

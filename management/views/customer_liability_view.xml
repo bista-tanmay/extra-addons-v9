@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_customer_liability_tree" model="ir.ui.view">
+            <field name="name">view_customer_liability.tree</field>
+            <field name="model">customer.liability</field>
+            <field name="arch" type="xml">
+                <tree string="">
+                    <field name="customer_id" domain="[('is_priority','=',True)]"/>
+                    <field name="points_earned" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_customer_liability_form" model="ir.ui.view">
+            <field name="name">view_customer_liability.form</field>
+            <field name="model">customer.liability</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visibility="draft,approved"/>
+                        <button string="Set to Draft" type="object" class="oe_highlight" name="draft_progressbar" attrs="{'readonly': [('state', '=', 'draft')]}"/>
+                        <button string="Set to Approved" type="object" class="oe_highlight" name="approved_progressbar" attrs="{'invisible': [('state','=','cancel')],'readonly':[('state','=','approve')]}"/>
+                        <button string="Set to Cancel" type="object" class="oe_highlight" name="cancel_progressbar" attrs="{'invisible': [('state','=','cancel')],'readonly':[('state','=','draft')]}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="customer_id" domain="[('is_priority','=',True)]"/>
+                            <field name="points_earned" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_customer_liability" model="ir.actions.act_window">
+            <field name="name">Customer Liability</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">customer.liability</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click here to create new customer
+                </p><p>
+                I cannot give more details they are all top secret
+            </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_main_customer_liability" name="Customer Liability" parent="base.menu_base_partner" />
+        <menuitem id="menu_customer_liability" action="action_customer_liability" name="Customer Liability" parent="menu_main_customer_liability" />
+    </data>
+</openerp>

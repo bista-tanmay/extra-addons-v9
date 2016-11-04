@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_course_records_tree" model="ir.ui.view">
+            <field name="name">Course Records Tree</field>
+            <field name="model">course.records</field>
+            <field name="arch" type="xml">
+                <tree string="Course Records Tree">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_course_records_form" model="ir.ui.view">
+            <field name="name">Course Records Form</field>
+            <field name="model">course.records</field>
+            <field name="arch" type="xml">
+                <form string="Course Records">
+                    <group colspan="4">
+                        <group cols="2">
+                            <field name="name"/>
+                            <field name="duration"/>
+                            <field name="subject_ids"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_course_records" model="ir.actions.act_window">
+            <field name="name">Course Records</field>
+            <field name="res_model">course.records</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create new records from here
+                </p>
+                <p>
+                    The Awesome features of Odoo will help you go through this
+                </p>
+            </field>
+        </record>
+
+    </data>
+</openerp>

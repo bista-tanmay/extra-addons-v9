@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <report id="report_openacademy_session"
+                model="openacademy.session"
+                name = "openacademy.session"
+                rml="openacademy/report/session.rml"
+                string="Session Details"/>
+
+        <report id="report_webkit_openacademy_session"
+                model="openacademy.session"
+                name = "webkit_openacademy.session"
+                file="openacademy/report/session.mako"
+                string="Webkit Session Details"
+                report_type="webkit"/>
+
+        <report id="report_openacademy_course"
+                model="openacademy.course"
+                name = "openacademy.course"
+                rml="openacademy/report/course.rml"
+                string="Course Details"/>
+
+
+    </data>
+</openerp>

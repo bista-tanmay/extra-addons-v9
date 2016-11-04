@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+    <data>
+
+        <record id="view_student_wizard_form" model="ir.ui.view">
+            <field name="name">view_student_wizard_form</field>
+            <field name="model">student.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Student Wizard form">
+
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="roll_no"/>
+                            <field name="english"/>
+                            <field name="marathi"/>
+                            <field name="hindi"/>
+                            <field name="science"/>
+                            <field name="total_marks"/>
+                            <field name="average_percent"/>
+                            <field name="achievement_ids"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_student_wizard" model="ir.actions.act_window">
+            <field name="name">Student Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_student_wizard_form"/>
+            <field name="target">new</field>
+            <!--<field name="multi">True</field>-->
+        </record>
+
+        <record model="ir.values" id="action_student_wizard_values">
+            <field name="model_id" ref="model_student" />
+            <field name="name">Student Wizard Values</field>
+            <field name="key2">client_action_multi</field>
+            <field name="value" eval="'ir.actions.act_window,' +str(ref('action_view_student_wizard'))" />
+            <field name="key">action</field>
+            <field name="target">new</field>
+            <field name="model">student</field>
+        </record>
+    </data>
+</openerp>

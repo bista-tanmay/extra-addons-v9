@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- <menuitem name="School Management"
+            id="school_management.menu_school_management"/> -->
+        
+        <record id="view_subject_tree" model="ir.ui.view">
+            <field name="name">subject.tree</field>
+            <field name="model">subject</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="subject">
+                    <field name="name"/>
+                    <field name="lectures_required"/>
+                    <field name='teacher_ids'/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_subject_form" model="ir.ui.view">
+            <field name="name">subject.form</field>
+            <field name="model">subject</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="subject">
+                    <sheet>
+                        <group>
+                        <field name="name" string="Subject Name"/>
+                        <field name="lectures_required" string="Lectures Required" />
+                        <field name='teacher_ids' widget='many2many_tags'/>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="view_subject_filter" model="ir.ui.view">
+            <field name="name">subject.select</field>
+            <field name="model">subject</field>
+            <field name="arch" type="xml">
+                <search string="Search subject">
+                    <field name="name" string="Name"/>
+               </search>
+            </field>
+        </record>
+        
+        <record id="action_subject_management" model="ir.actions.act_window">
+            <field name="name">Subject</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">subject</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_subject_filter"/>
+            <field name="tree_view_id" ref="view_subject_tree"/>
+            <field name="form_view_id" ref="view_subject_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a subject 
+                </p><p>
+                    Odoo will help you efficiently handle School Management.
+                </p>
+            </field>
+        </record>
+<!--        <record id="action_subject_tree" model="ir.actions.act_window.view">
+            <field name="sequence">1</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_subject_tree"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>
+
+        <record id="action_subject_form" model="ir.actions.act_window.view">
+            <field name="sequence">2</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_subject_form"/>
+            <field name="act_window_id" ref="action_school_management"/>
+        </record>-->
+        
+        <menuitem name="Subject" id="menu_subject" parent="menu_school_management"/>
+        <menuitem name="Subject Records " action='action_subject_management' id="menu_subject_records" parent="menu_subject"/>
+
+    </data>
+</openerp>    

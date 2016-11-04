@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- <menuitem name="Office Management"
+            id="menu_office_management"/> -->
+        
+        <!-- Attendance Information -->
+
+        <record id="view_attendance_information_tree" model="ir.ui.view">
+            <field name="name">attendance_information.tree</field>
+            <field name="model">attendance_information</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="attendance_information">
+                    <field name="attendance_date"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="view_attendance_information_form" model="ir.ui.view">
+            <field name="name">attendance_information.form</field>
+            <field name="model">attendance_information</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <form string="attendance_information">
+                    <sheet>
+                        <group string="Attendance">
+                            <field name="attendance_date"/>
+                            <field name="status"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_attendance_management" model="ir.actions.act_window">
+            <field name="name">Attendance Information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">attendance_information</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="tree_view_id" ref="view_attendance_information_tree"/>
+            <field name="form_view_id" ref="view_attendance_information_form"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a Attendance Information
+                </p><p>
+                    Odoo will help you efficiently handle Office Management.
+                </p>
+            </field>
+        </record>
+
+        <!-- Attendance Information -->
+        
+        <!-- <menuitem name="Employee Master" id="menu_employee_master" parent="menu_office_management"/> -->
+        <menuitem name="Attendance Information" action='action_attendance_management' id="menu_attendance_information" parent="menu_employee_master"/>
+    </data>
+</openerp>    

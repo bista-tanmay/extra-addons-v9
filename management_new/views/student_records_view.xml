@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="menu_management" name="New Management"/>
+
+        <record id="view_student_records_tree" model="ir.ui.view">
+            <field name="name">student_records.tree</field>
+            <field name="model">student.records</field>
+            <field name="arch" type="xml">
+                <tree string="Students">
+                    <field name="name"/>
+                    <field name="standard"/>
+                    <field name="division"/>
+                    <field name="roll_no"/>
+                    <field name="birth_date"/>
+                    <field name="fees_amt"/>
+                    <!--<field name="subject_ids"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_student_records_form" model="ir.ui.view">
+            <field name="name">student_records.form</field>
+            <field name="model">student.records</field>
+            <field name="arch" type="xml">
+                <form string="Students">
+                    <!--<header>-->
+                        <!--<button string="Open Wizard" type="object" name="show_result" />-->
+                    <!--</header>-->
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="standard"/>
+                            <field name="division"/>
+                            <field name="roll_no"/>
+                            <field name="birth_date"/>
+                            <field name="fees_amt"/>
+                            <field name="subject_ids"/>
+                            <!--<field name="subject_ids" widget="many2many_tags"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_student_records" model="ir.actions.act_window">
+            <field name="name">Student Records</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.records</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Student Records
+                </p><p>
+                Click here to create a student
+            </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent but It needs no action -->
+        <menuitem id="menu_student" name="Student" parent="menu_management"/>
+
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_student_records" name="Student Records" parent="menu_student" action="action_student_records"/>
+    </data>
+</openerp>

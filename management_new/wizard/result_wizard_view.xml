@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       <record id="view_result_wizard_form" model="ir.ui.view">
+            <field name="name">view_result_wizard.form</field>
+            <field name="model">result.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Result Wizard">
+                    <group>
+                        <field name="name"/>
+                        <field name="standard"/>
+                        <field name="division"/>
+                        <field name="roll_no"/>
+                        <field name="birth_date"/>
+                        <field name="fees_amt"/>
+                        <field name="subject_ids" widget="many2many_tags"/>
+                        <!--<field name="student_subject_ids">-->
+                            <!--<field name = "name"/>-->
+                            <!--<field name = "marks_obtained"/>-->
+                        <!--</field>-->
+
+                    </group>
+               </form>
+            </field>
+        </record>
+
+        <record id="action_result_wizard" model="ir.actions.act_window">
+            <field name="name">View results</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">result.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_result_wizard_form"/>
+            <field name="target">new</field>
+            <!--<field name="multi">True</field>-->
+        </record>
+
+        <!--Following record with model as ir.values enables to put the wizard in student model under Action..-->
+        <!--dropdown.-->
+
+       <!--<record model="ir.values" id="result_wizard_values">-->
+            <!--<field name="model_id" ref="model_student_records"/>-->
+            <!--<field name="name">View Results</field>-->
+            <!--<field name="key2">client_action_multi</field>-->
+            <!--<field name="value" eval="'ir.actions.act_window,' + str(ref('action_result_wizard'))" />-->
+            <!--<field name="key">action</field>-->
+            <!--<field name="model">student.records</field>-->
+       <!--</record>-->
+
+    </data>
+</openerp>
