@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- =============== Number input wizard view==================  -->
+        <record id="calculate_form_view1" model="ir.ui.view">
+            <field name="name">calculate.form.wizard</field>
+            <field name="model">calculate.calculate</field>
+            <field name="arch" type="xml">
+                <form string="Calculation Form">
+                    <group>
+                        <field name="num1"/>
+                        <field name="num2"/>
+                        <field name="select"/>
+                        <footer>
+                            <button type="object" name="calculate" string="Calculate"/>
+                            <button name="cancel" string="Cancel" class="oe_link"/>
+                        </footer>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!-- =============== Output of Input wizard view==================  -->
+        <record id="result_form_view1" model="ir.ui.view">
+            <field name="name">result.form.wizard</field>
+            <field name="model">calculate.result</field>
+            <field name="arch" type="xml">
+                <form string="Result Form">
+                    <group>
+                        <field name="result"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <!--  ============ calculate form wizard Action View ====================  -->
+        <record model="ir.actions.act_window" id="wizard_form_action">
+            <field name="name">Calculate</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">calculate.calculate</field>
+            <field name="view_id" ref="calculate_form_view1"/>
+            <field name="target">new</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+        </record>
+
+    	<menuitem id="wizard_menu" parent="main_menu" name="Wizard"/>
+        <menuitem id="wizard_form" parent="wizard_menu" name="Calculate" action="wizard_form_action"/>
+
+    </data>
+</openerp>

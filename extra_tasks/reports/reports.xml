@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="res_users_commission_report"
+        model="res.users"
+        report_type="qweb-pdf"
+        string="Commission Report"
+        name="extra_tasks.report_res_users_commission"
+        file="extra_tasks.report_res_users_commission"
+        />
+    </data>
+</openerp>

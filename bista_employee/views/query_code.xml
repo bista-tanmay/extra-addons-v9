@@ -1,0 +1,14 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<openerp>-->
+    <!--<data>-->
+        <!--<record id="query_sequence_code" model="ir.sequence.type">-->
+            <!--<field name="name">Hotel Query</field>-->
+            <!--<field name="code">Hotel code</field>-->
+        <!--</record>-->
+        <!--<record id="query_sequence" model="ir.sequence">-->
+            <!--<field name="name">Hotel Query Name</field>-->
+            <!--<field name="code">Hotel code</field>-->
+            <!--<field name="prefix">HT</field>-->
+        <!--</record>-->
+    <!--</data>-->
+<!--</openerp>-->

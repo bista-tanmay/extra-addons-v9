@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <!-- ================== employee search view ==========================  -->
+        <record model="ir.ui.view" id="employee_search_view">
+            <field name="name">employee.search.view</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <search string="Searching by Name">
+                    <field name="name"/>
+                    <field name="email"/>
+                    <filter name="my_filter" string="Name" domain="['name','==','harsh']"/>
+
+                    <!--<group string="Group By">-->
+                    <!--<filter name="group_by_date" string="Date" context="{'group_by': 'check_in'}"/>-->
+                    <!--</group>-->
+                    <!--<group string="Group By">-->
+                    <!--<filter name="group_by_name" string="Name" context="{'group_by': 'customer'}"/>-->
+                    <!--</group>-->
+                </search>
+            </field>
+        </record>
+
+        <!-- ================== employee tree view ==========================  -->
+        <record model="ir.ui.view" id="employee_tree_view">
+            <field name="name">employee.tree.view</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <tree string="employee" editable="bottom">
+                    <field name="emp_id"/>
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="emp_dept"/>
+                    <!--<field name="gender"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <!-- =============== employee form view==================  -->
+        <record model="ir.ui.view" id="employee_form_view">
+            <field name="name">employee.form.view</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <form string="employee Form">
+                    <sheet>
+                        <group>
+                            <field name="emp_id"/>
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                            <field name="emp_dept"/>
+                            <field name="country_id"/>
+                            <!--<field name="states_id"/>-->
+                            <!--<field name="gender"/>-->
+                        </group>
+                        <footer>
+                            <button name="department" string="Display Details" type="object"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--================= employee s action ============================ -->
+        <record model="ir.actions.act_window" id="employee_s_action">
+            <field name="name">employee Form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="search_view_id" ref="employee_search_view"/>
+            <field name="view_id" ref="employee_form_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+        </record>
+
+        <menuitem id="main_menu" name="Employee Management"/>
+        <menuitem id="emp_main_menu" parent="main_menu" name="Employee Details"/>
+        <menuitem id="employee_sub_menu" parent="emp_main_menu" name="Employees" action="employee_s_action"/>
+
+        <!--================= Employee Id inherit in res.partner ============================ -->
+        <!--<record id="employee_inherit_res_partner" model="ir.ui.view">-->
+        <!--<field name="name">employee.inherit.res.partner</field>-->
+        <!--<field name="model">res.partner</field>-->
+        <!--<field name="inherit_id" ref="base.view_partner_form"/>-->
+        <!--<field name="arch" type="xml">-->
+        <!--<data>-->
+        <!--<xpath expr="//field[@name='image']" position="before">-->
+        <!--<field name="emp_id"/>-->
+        <!--</xpath>-->
+        <!--</data>-->
+        <!--</field>-->
+        <!--</record>-->
+
+         <!-- ================== employee tree view ==========================  -->
+        <record model="ir.ui.view" id="department_tree_view">
+            <field name="name">department.tree.view</field>
+            <field name="model">dept.dept</field>
+            <field name="arch" type="xml">
+                <tree string="Department" editable="bottom">
+                    <field name="dept_name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- =============== employee form view==================  -->
+        <record model="ir.ui.view" id="department_form_view">
+            <field name="name">department.form.view</field>
+            <field name="model">dept.dept</field>
+            <field name="arch" type="xml">
+                <form string="employee Form">
+                    <sheet>
+                        <group>
+                            <field name="dept_name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--================= department s action ============================ -->
+        <record model="ir.actions.act_window" id="department_s_action">
+            <field name="name">Department Form</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dept.dept</field>
+            <field name="view_id" ref="department_form_view"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+        </record>
+
+        <menuitem id="department_menu" parent="emp_main_menu" name="Department" action="department_s_action"/>
+
+
+    </data>
+</openerp>

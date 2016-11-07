@@ -1,0 +1,11 @@
+<openerp>
+    <data>
+        <report
+                id="report_session"
+                model="res.partner"
+                string="Employee Report"
+                name="bista_employee.employee_report_temp_id"
+                file="bista_employee.employee_report_temp_id"
+                report_type="qweb-pdf" />
+    </data>
+</openerp>

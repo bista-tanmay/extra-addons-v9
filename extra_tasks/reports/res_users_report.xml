@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- id: template_id this id should be same as name & file attribute in reports.xml or where you have defined all reports -->
+        <template id="report_res_users_commission">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <h2><span t-field="o.name"/>'s Commission Report</h2>
+                            <h2><span t-field="o.name"/>'s Commission is set to <span t-field="o.commission"/>%</h2>
+                            <!--<h2><span t-esc="get_commission()"/></h2>-->
+                            <!--<h2><span t-field="o.partner_id.id"/></h2>-->
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th>User</th>
+                                    <th>Sales Order</th>
+                                    <th>Sale order Amount</th>
+                                    <th>Commission Amount</th>
+                                </thead>
+                                <tbody>
+                                    <span t-raw="get_commission()"/>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

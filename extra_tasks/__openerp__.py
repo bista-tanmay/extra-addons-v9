@@ -29,6 +29,9 @@
     """,
     'depends' : ['base','purchase','hr','sale'],
     'data': [
+        'views/commission_report_view.xml',
+        'reports/reports.xml',
+        'reports/res_users_report.xml',
     ],
 
     'installable': True,
