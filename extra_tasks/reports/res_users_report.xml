@@ -18,8 +18,33 @@
                                     <th>Sale order Amount</th>
                                     <th>Commission Amount</th>
                                 </thead>
+                                <!--<tbody>-->
+                                <!--We can return full HTML row using following statement-->
+                                    <!--<span t-raw="get_custom_commission()"/>-->
+                                <!--</tbody>-->
                                 <tbody>
-                                    <span t-raw="get_commission()"/>
+                                    <t t-set="order_amt" t-value="0"/>
+                                    <t t-set="total_commission" t-value="0"/>
+                                    <!--<t t-set=""-->
+                                    <t t-foreach="get_commission()" t-as="row">
+                                        <tr>
+                                            <td><span t-esc="row.get('Username')"/></td>
+                                            <td><span t-esc="row.get('SaleOrder')"/></td>
+                                            <td><span t-esc="row.get('SaleOrderAmount')"/></td>
+                                            <td><span t-esc="row.get('CurrCommission')"/></td>
+
+                                        </tr>
+                                        <t t-set="order_amt" t-value="order_amt+row.get('SaleOrderAmount')"/>
+                                        <t t-set="total_commission" t-value="total_commission+row.get('CurrCommission')"/>
+                                    </t>
+                                    <tr>
+                                        <td colspan="2"><b>Total Sale Order Amount</b></td>
+                                        <td colspan="2"><span t-esc="order_amt"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"><b>Total Commission</b></td>
+                                        <td colspan="2"><span t-esc="total_commission"/></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

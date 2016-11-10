@@ -11,12 +11,12 @@
             <!-- report name: foldername.template_id this id is of template -->
         </report>
 
-        <report id="sale_report_inherit_qweb"
-        model="sale.order"
-        report_type="qweb-pdf"
-        string="Custom Quotation/Order"
-        name="management.report_sale_order_qweb"
-        file="management.report_sale_order_qweb"
-        />
+        <!--<report id="sale_report_inherit_qweb"-->
+        <!--model="sale.order"-->
+        <!--report_type="qweb-pdf"-->
+        <!--string="Custom Quotation/Order"-->
+        <!--name="management.report_sale_order_qweb"-->
+        <!--file="management.report_sale_order_qweb"-->
+        <!--/>-->
     </data>
 </openerp>
