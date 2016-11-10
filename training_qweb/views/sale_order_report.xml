@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="report_sale_order_qweb">
+
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                        <style>
+                            h3{
+                            color:red;}
+                            table{
+                            width:100%;
+                            }
+                            .product-table td,.product-table th{
+                            border:1px solid black;
+                            padding:5px;}
+                            tr{
+                            page-break-inside:avoid;}
+                        </style>
+                        <h3>Address</h3>
+                        <div t-field="o.partner_id"
+                             t-field-options='{"widget": "contact", "fields": ["address", "name", "phone", "fax"], "no_marker": false}'/>
+                        <div class="col-xs-5">
+                            <strong><span t-if="o.state not in ['draft','sent']">Order No</span></strong>
+                            <strong><span t-if="o.state in ['draft','sent']">Quotation No</span></strong>
+                            <span t-field="o.name"/>
+                        </div>
+                        <div class="col-xs-5">
+                            <strong><span>Current Time</span></strong>
+                            <span t-esc="get_current_time()"/>
+                        </div>
+                        <div class="col-xs-5">
+                            <span t-esc="get_data()"/>
+                            <span t-raw="get_data()"/>
+                        </div>
+                            <table class="product-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Desc.</th>
+                                        <th>Qty</th>
+                                        <th>Rate</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.order_line" t-as="line">
+                                        <td><span t-field="line.product_id.name"/></td>
+                                        <td><span t-field="line.name"/></td>
+                                        <td><span t-field="line.product_uom_qty"/></td>
+                                        <td><span t-field="line.price_unit"/></td>
+                                        <td><span t-field="line.price_subtotal"
+                                                  t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tr class="border-black">
+                                    <td><strong>Total Without Taxes</strong></td>
+                                    <td class="text-right">
+                                        <span t-field="o.amount_untaxed"
+                                              t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Taxes</td>
+                                    <td class="text-right">
+                                        <span t-field="o.amount_tax"
+                                              t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                    </td>
+                                </tr>
+                                <tr class="border-black">
+                                    <td><strong>Total</strong></td>
+                                    <td class="text-right">
+                                        <span t-field="o.amount_total"
+                                              t-field-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td><strong>Final Total</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="formatLang(o.get_total(), monetary=True, currency_obj=o.company_id.currency_id)"
+                                              />
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+        <template id="custom_layout">
+            <t t-if="not o and doc">
+            <t t-set="o" t-value="doc"/>
+            </t>
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"></t>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"></t>
+            </t>
+            <t t-call="training.custom_layout_header" />
+            <t t-raw="0" />
+            <t t-call="training.custom_layout_footer" />
+        </template>
+
+        <template id="custom_layout_header">
+            <div class="header">
+                <h1>Custom Header</h1>
+            </div>
+        </template>
+
+        <template id="custom_layout_footer">
+            <div class="footer">
+                <h1>Custom Footer</h1>
+            </div>
+        </template>
+
+    </data>
+</openerp>

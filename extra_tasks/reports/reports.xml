@@ -8,5 +8,13 @@
         name="extra_tasks.report_res_users_commission"
         file="extra_tasks.report_res_users_commission"
         />
+
+        <!--<report id="custom_product_report"-->
+        <!--model="sale.order"-->
+        <!--report_type="qweb-pdf"-->
+        <!--string="Product Report"-->
+        <!--name="extra_tasks.product_report"-->
+        <!--file="extra_tasks.product_report"-->
+        <!--/>-->
     </data>
 </openerp>

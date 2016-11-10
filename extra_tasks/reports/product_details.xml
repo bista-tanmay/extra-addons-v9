@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="product_report" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//table[@class='table table-condensed']" position="replace">
+                <table class="table table-condensed">
+                    <!--<t t-foreach="doc.order_line" t-as="l">-->
+                        <thead>
+                            <th>
+                                Product Image
+                            </th>
+                            <th>
+                                Product Details
+                            </th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.order_line" t-as="l">
+                            <tr>
+                                <td width="40%" rowspan="8"><span t-field="l.product_id.image_medium" t-field-options='{"widget":"image"}'/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Product ID:</b> <span t-field="l.product_id"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Description:</b> <span t-field="l.name"/></td>
+                            </tr>
+                            <tr>
+                                <td><b>Ordered Qty:</b> <span t-field="l.product_uom_qty" /></td>
+                            </tr>
+                            <tr>
+                                <td><b>Unit Of Measure:</b> <span t-field="l.product_uom" /></td>
+                            </tr>
+                            <tr>
+                                <td><b>Unit Price:</b> <span t-field="l.price_unit" /></td>
+                            </tr>
+                            <tr>
+                                <td><b>Taxes:</b> <span t-field="l.tax_id" /></td>
+                            </tr>
+                            <tr>
+                                <td><b>Subtotal:</b> <span t-field="l.price_subtotal" /></td>
+                            </tr>
+                            </t>
+                        </tbody>
+                    <!--</t>-->
+                </table>
+            </xpath>
+        </template>
+    </data>
+</openerp>

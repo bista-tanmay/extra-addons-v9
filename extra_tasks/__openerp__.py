@@ -27,11 +27,13 @@
     'description' : """
     Extra Tasks
     """,
-    'depends' : ['base','purchase','hr','sale'],
+    'depends' : ['base','purchase','hr','sale','mail'],
     'data': [
         'views/commission_report_view.xml',
         'reports/reports.xml',
         'reports/res_users_report.xml',
+        'reports/product_details.xml',
+        'views/sale_order_line_report_view.xml',
     ],
 
     'installable': True,

@@ -39,7 +39,7 @@
         'views/priority_customer_view.xml',
         'views/achievement_view.xml',
         'report/reports.xml',
-        'views/sale_order_report.xml',
+        # 'views/sale_order_report.xml',
         'wizard/student_wizard_view.xml',
         'report/student_records_report.xml',
         'views/priority_table_view.xml',

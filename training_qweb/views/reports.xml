@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <report id="sale_report_inherit_qweb"
+        model="sale.order"
+        report_type="qweb-pdf"
+        string="Custom Quotation/Order"
+        name="training.report_sale_order_qweb"
+        file="training.report_sale_order_qweb"
+        />
+
+
+        <record id="sale_report_inherit_qweb" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="training.paperformat_custom_qweb"/>
+        </record>
+
+
+
+    </data>
+</openerp>
