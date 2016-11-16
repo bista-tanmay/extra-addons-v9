@@ -12,8 +12,9 @@ class CommissionReport(report_sxw.rml_parse):
             })
 
     def get_commission(self):
+        # Browse user details using active id i.e. current user
         get_user_details = self.pool.get('res.users').browse(self.cr, self.uid, self.localcontext['active_ids'])
-        # Current User for whom the report is being printed
+        # Current Username for whom the report is being printed
         user_name = get_user_details.partner_id.name
         # Get all sale order related to user above
         get_all_saleorders = self.pool.get('sale.order').search(self.cr, self.uid,

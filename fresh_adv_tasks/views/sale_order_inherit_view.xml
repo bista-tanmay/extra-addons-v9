@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="sale_view_order_form" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="extra_notes" placeholder="Enter extra notes here..." invisible="context.get('curr_state')"/>
+                </xpath>
+
+            </field>
+        </record>
+
+        <!--<record id="sale_order_inherit_new_tree" model="ir.ui.view">-->
+            <!--<field name="name">sale_order_inherit_new_tree</field>-->
+            <!--<field name="model">sale.order.inherit.new</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<tree string="Sale Orders Tree">-->
+                    <!--<field name="sale_order_name"/>-->
+                    <!--<field name="sale_order_amount"/>-->
+                    <!--<field name="nos"/>-->
+                <!--</tree>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <!--<record id="sale_order_inherit_new_form" model="ir.ui.view">-->
+            <!--<field name="name">sale_order_inherit_new_form</field>-->
+            <!--<field name="model">sale.order.inherit.new</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<form string="Sale Orders Form">-->
+                    <!--<sheet>-->
+                        <!--<group>-->
+                            <!--<field name="sale_order_name"/>-->
+                            <!--<field name="sale_order_amount"/>-->
+                            <!--<field name="nos"/>-->
+                        <!--</group>-->
+                    <!--</sheet>-->
+                <!--</form>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <record id="ir_actions_server_sale_order_inherit" model="ir.actions.server">
+            <field name="sequence" eval="5"/>
+            <field name="state">code</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_sale_order_inherit_new"/>
+            <field name="code">action = pool.get('sale.order.inherit.new').get_context_sale_orders(cr, uid, None, context={})</field>
+            <field name="name">Moi Sale Order</field>
+        </record>
+
+        <record id="sale.action_quotations" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="inherit_id">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sale.view_quotation_tree"/>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field name="context">{}</field>
+            <field name="domain">[('state','in',('draft','sent','cancel'))]</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Create a Quotation, the first step of a new sale.
+              </p><p>
+                Your next actions should flow efficiently: confirm the Quotation
+                to a Sale Order, then create the Invoice and collect the Payment.
+              </p><p>
+                Note that once a Quotation becomes a Sale Order, it will be moved
+                from the Quotations list to the Sales Order list.
+              </p>
+            </field>
+        </record>
+
+        <record id="sale.action_orders" model="ir.actions.act_window">
+            <field name="name">Sales Orders</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+            <field name="context">{'show_sale': True,'curr_state':True}</field>
+            <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a Quotation, the first step of a new sale.
+                </p><p>
+                    Your next actions should flow efficiently: confirm the Quotation to a Sale Order, then create the Invoice and collect the Payment.
+                </p><p>
+                    Note that once a Quotation becomes a Sale Order, it will be moved from the Quotations list to the Sales Order list.
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_sale_order_context" name="View Sale Order Context" parent="sale.menu_sale_invoicing" action="ir_actions_server_sale_order_inherit"/>
+
+    </data>
+</openerp>

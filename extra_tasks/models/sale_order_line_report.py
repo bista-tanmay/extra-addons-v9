@@ -1,18 +1,16 @@
 from openerp import tools
-from openerp.osv import fields,osv
+from openerp import fields,models,api,_
 
-class special_sale_order_pivot(osv.osv):
+class special_sale_order_pivot(models.Model):
     _name='special.sale.order.pivot'
     _description = "Sales Orders Statistics"
     _auto = False
     _rec_name = 'product_id'
 
-    _columns = {
-        'product_id': fields.many2one('product.product', 'Product', readonly=True),
-        'price_total': fields.float('Total Amount', readonly=True),
-        'qty_invoiced': fields.float('Total Qty', readonly=True),
-        'avg_unit_price': fields.float('Avg. Unit Price', readonly=True),
-    }
+    product_id = fields.Many2one('product.product', 'Product', readonly=True)
+    price_total = fields.Float('Total Amount', readonly=True)
+    qty_invoiced = fields.Float('Total Qty', readonly=True)
+    avg_unit_price = fields.Float('Avg. Unit Price', readonly=True)
 
     def _select(self):
         select_str = """
