@@ -20,7 +20,6 @@
 ##############################################################################
 {
     'name' : 'Extra Tasks',
-    'sequence':'3',
     'version' : '1.0',
     'author' : 'Tanmay @ Bista Solutions',
     'category' : 'extra',

@@ -50,12 +50,37 @@ class SaleOrderInherit(models.Model):
     #     # return curr_state
     #     return super(SaleOrderInherit, self).name_get(cr, uid, ids, context=context)
 
-class ResPartner(models.Model):
-    _inherit = 'res.partner'
+# class ResPartner(models.Model):
+#     _inherit = 'res.partner'
 
-    def write(self,vals):
-        print "Res Partner Write vals", vals
-        return super(ResPartner,self).write(vals)
+    # @api.model
+    # def create(self,vals):
+    #     print "Create Self", self
+    #     print "Res Partner Create vals", vals
+    #     return super(ResPartner, self).create(vals)
+    #
+    # @api.multi
+    # def write(self,vals):
+    #     print "Write Self Context",self._context
+    #     print "Res Partner Write vals", vals
+    #     return super(ResPartner,self).write(vals)
+    #
+    # @api.model
+    # def default_get(self):
+    #     print "Default Self",self
+    #
+    # def name_get(self,cr, uid, ids, context):
+    #     print "Name Get",self
+    #     return super(ResPartner, self).name_get(cr, uid, ids, context=context)
+
+    # def name_search(self, cr, user, name='', args=None, operator='ilike', context=None, limit=100):
+    #     print "name_search self",self
+    #     print "name_search context",context
+    #
+    # def read(self, cr, uid, ids, fields=None, context=None, load='_classic_read'):
+    #     print "read self",self
+    #     print "read context", context
+    #     return super(ResPartner, self).read(cr, uid, ids, fields=fields, context=context, load=load)
 
 class SaleOrderInheritView(models.Model):
     _name = 'sale.order.inherit.new'

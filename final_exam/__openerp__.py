@@ -3,7 +3,6 @@
     'author': 'Tanmay @ Bista Solutions',
     'version': '1.0',
     'category': 'Examination',
-    'sequence': 1,
     'website':'https://www.practicalexam.com',
     'description': """
     The Final Practical Test

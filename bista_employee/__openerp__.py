@@ -2,7 +2,6 @@
     'name': 'Bista Employee Management',
     'version': '1.0',
     'category': 'Employee Management',
-    "sequence": 1,
     'complexity': "easy",
     'description': """
             This module provide overall Employee Management System over OpenERP

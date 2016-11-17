@@ -23,7 +23,6 @@
 {
     'name': 'Fresh New Adv Tasks',
     'summary': 'Fresh New Adv Tasks Module Project',
-    'sequence': '5',
     'version': '1.0',
     'description': """
 Fresh New Adv Tasks Module Project.

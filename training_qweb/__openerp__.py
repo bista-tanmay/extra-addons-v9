@@ -4,7 +4,6 @@
     'name' : 'Training module',
     'version' : '9.0.1.0.0',
     'summary': 'Qweb Reports',
-    'sequence': 30,
     'description': """
 Qweb Reports
     """,
