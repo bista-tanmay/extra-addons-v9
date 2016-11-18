@@ -41,6 +41,5 @@
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="menu_sale_order_pivot_report" name="View Sale Order Pivot" parent="base.menu_sale_report" action="action_new_sale_order_pivot" />
 
-
     </data>
 </openerp>

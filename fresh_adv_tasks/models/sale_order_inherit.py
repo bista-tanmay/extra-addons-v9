@@ -50,37 +50,9 @@ class SaleOrderInherit(models.Model):
     #     # return curr_state
     #     return super(SaleOrderInherit, self).name_get(cr, uid, ids, context=context)
 
-# class ResPartner(models.Model):
-#     _inherit = 'res.partner'
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
 
-    # @api.model
-    # def create(self,vals):
-    #     print "Create Self", self
-    #     print "Res Partner Create vals", vals
-    #     return super(ResPartner, self).create(vals)
-    #
-    # @api.multi
-    # def write(self,vals):
-    #     print "Write Self Context",self._context
-    #     print "Res Partner Write vals", vals
-    #     return super(ResPartner,self).write(vals)
-    #
-    # @api.model
-    # def default_get(self):
-    #     print "Default Self",self
-    #
-    # def name_get(self,cr, uid, ids, context):
-    #     print "Name Get",self
-    #     return super(ResPartner, self).name_get(cr, uid, ids, context=context)
-
-    # def name_search(self, cr, user, name='', args=None, operator='ilike', context=None, limit=100):
-    #     print "name_search self",self
-    #     print "name_search context",context
-    #
-    # def read(self, cr, uid, ids, fields=None, context=None, load='_classic_read'):
-    #     print "read self",self
-    #     print "read context", context
-    #     return super(ResPartner, self).read(cr, uid, ids, fields=fields, context=context, load=load)
 
 class SaleOrderInheritView(models.Model):
     _name = 'sale.order.inherit.new'
@@ -124,27 +96,19 @@ class SaleOrderInheritView(models.Model):
 class ResCountry(models.Model):
     _inherit = 'res.country'
 
-    @api.multi
-    def name_get(self):
-        print "name_get Method Called"
-        print "name_get self",self
-        return super(ResCountry,self).name_get()
-
-    @api.model
-    def name_search(self, name, args=None, operator='ilike', limit=100):
-        args = args or []
-        domain = []
-        print "name_search Method Called"
-        print "name_search self", self
-        if name:
-            domain = ['|', ('code', '=ilike', name + '%'), ('name', operator, name)]
-            if operator in expression.NEGATIVE_TERM_OPERATORS:
-                domain = ['&', '!'] + domain[1:]
-        country = self.search(domain + args, limit=limit)
-        return country.name_get()
-
-    @api.multi
-    def write(self,vals):
-        print "Write self",self
-        print "Write vals",vals
-        return super(ResCountry,self).write(vals)
+    def name_get(self,cr, uid, ids, context):
+        curr_code = []
+        # We get context while editing a res.partner model record
+        # While the record is being edited we keep the country names intact
+        if context.get('c_id',False):
+            # We browse through all records while
+            # setting the the id and country name
+            for each_country in self.browse(cr, uid, ids, context):
+                curr_code.append((each_country.id,each_country.name))
+        else:
+            # Once we loose the context we replace
+            # the name with country code while passing id with it
+            # i.e. we pass id and country code
+            for each_country in self.browse(cr, uid, ids, context):
+                curr_code.append((each_country.id,each_country.code))
+        return curr_code
