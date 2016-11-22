@@ -1,1 +1,2 @@
 import sale_order_inherit
+import sale_order_confirm_wizard
