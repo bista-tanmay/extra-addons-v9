@@ -35,7 +35,8 @@ Fresh New Adv Tasks Module Project.
     ],
     'data': [
         'views/sale_order_inherit_view.xml',
-        'views/sale_order_confirm_wizard_view.xml'
+        'views/sale_order_confirm_wizard_view.xml',
+        'views/sale_order_line_print_view.xml',
     ],
 
     'installable': True,

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="action_sale_order_line" model="ir.actions.act_window">
+            <field name="name">action_sale_order_line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+              </p><p>
+                <!-- More details about what a user can do with this object will be OK -->
+              </p>
+            </field>
+        </record>
+
+        <report id="partner_xlsx"
+                model="sale.order.line"
+                string="Print to XLSX"
+                report_type="xlsx"
+                name="res.partner.xlsx"
+                file="res.partner.xlsx"
+                attachment_use="False"/>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_sale_order_line_view" action="action_sale_order_line" name="View Sale Order Line" parent="base.menu_sale_report" />
+
+    </data>
+</openerp>

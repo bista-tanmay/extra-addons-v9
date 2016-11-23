@@ -8,11 +8,16 @@ class SaleOrderConfirmWizard(models.TransientModel):
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
         res = super(SaleOrderConfirmWizard, self).fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+        # Get current ids from context
         curr_active_ids = self._context.get('active_ids')
+        # Initialize two empty strings to store sale order names & their respective states
         name_of_sale_orders = ''
         state_of_sale_orders = ''
+        # Loop through all sale order active ids
         for all_ids in curr_active_ids:
+            # Get each sale order record using active ids
             curr_sale_order = self.env['sale.order'].browse(all_ids)
+            # Check
             if curr_sale_order.state == 'draft':
                 pass
             else:
