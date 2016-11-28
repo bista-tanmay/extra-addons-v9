@@ -18,7 +18,7 @@
 
         <report id="partner_xlsx"
                 model="sale.order.line"
-                string="Print to XLSX"
+                string="Print to Xlsx"
                 report_type="xlsx"
                 name="res.partner.xlsx"
                 file="res.partner.xlsx"
