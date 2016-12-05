@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="mrp_mrp_bom_form_view" model="ir.ui.view">
+            <field name="name">mrp.mrp_bom_form_view</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='bom_line_ids']/tree" position="inside">
+                        <field name="is_standard" string="Standard"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="sale_view_order_form" model="ir.ui.view">
+            <field name="name">sale.view_order_form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='order_line']/tree" position="attributes">
+                    <attribute name="create">false</attribute>
+                    <attribute name="decoration-info">is_bom_of_product==False</attribute>
+                </xpath>
+                <xpath expr="//field[@name='commission']" position="after">
+                    <field name="bom_sale_order_line_id" attrs="{'readonly':[('state','!=','draft')]}"/>
+                </xpath>
+                <xpath expr="//form/sheet/div[@class='oe_button_box']" position="inside">
+                    <button name="add_order_line" type="object" class="oe_inline oe_stat_button" icon="fa-plus" string="Add Product"/>
+                </xpath>
+                <xpath expr="//notebook//page//field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                    <field name="is_bom_of_product" invisible="1"/>
+                </xpath>
+                <xpath expr="//notebook//page//field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                    <field name="sequence" attrs="{'invisible':[('is_bom_of_product','=',True)]}"/>
+                    <field name="is_child_of" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

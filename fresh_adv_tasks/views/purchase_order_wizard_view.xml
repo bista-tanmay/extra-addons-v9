@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
+
+        <!-- First task dated 25th November 2016 i.e. Merging of Purchase Orders on purchase.order -->
         <record id="view_purchase_order_confirm_wizard_form" model="ir.ui.view">
             <field name="name">purchase.order.wizard</field>
             <field name="model">purchase.order.wizard</field>
@@ -19,6 +21,7 @@
             </field>
         </record>
 
+        <!-- First task dated 25th November 2016 i.e. Merging of Purchase Orders on purchase.order -->
         <record id="action_purchase_order_confirm_wizard" model="ir.actions.act_window">
             <field name="name">Confirm All Selected Purchase Order</field>
             <field name="type">ir.actions.act_window</field>
@@ -29,6 +32,7 @@
             <field name="target">new</field>
         </record>
 
+        <!-- First task dated 25th November 2016 i.e. Merging of Purchase Orders on purchase.order -->
         <record model="ir.values" id="action_purchase_wizard_values">
             <field name="model_id" ref="model_purchase_order" />
             <field name="name">Purchase Order Wizard Values</field>
@@ -39,24 +43,24 @@
             <field name="model">purchase.order</field>
         </record>
 
+        <!-- Second task dated 25th November 2016 i.e. Bulk Transfer on stock.picking -->
         <record id="view_stock_picking_confirm_wizard_form" model="ir.ui.view">
             <field name="name">stock.picking.wizard</field>
             <field name="model">stock.picking.wizard</field>
             <field name="arch" type="xml">
                 <form string="Confirm Stock Picking">
                     <sheet>
-                        <group>
-                            <separator string="Are you Sure?"/>
-                            <footer>
-                                <button name="confirm_stock_transfer" type="object" string="Confirm"/>
-                                <button special="cancel" string="Cancel"/>
-                            </footer>
-                        </group>
+                        <separator string="Are you Sure?"/>
                     </sheet>
+                    <footer>
+                        <button name="confirm_stock_transfer" type="object" string="Confirm"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
                 </form>
             </field>
         </record>
 
+        <!-- Second task dated 25th November 2016 i.e. Bulk Transfer on stock.picking -->
         <record id="action_stock_picking_confirm_wizard" model="ir.actions.act_window">
             <field name="name">Confirm All Selected Stock Pickings</field>
             <field name="type">ir.actions.act_window</field>
@@ -67,6 +71,7 @@
             <field name="target">new</field>
         </record>
 
+        <!-- Second task dated 25th November 2016 i.e. Bulk Transfer on stock.picking -->
         <record model="ir.values" id="action_stock_picking_wizard_values">
             <field name="model_id" ref="stock.model_stock_picking" />
             <field name="name">Stock Picking Wizard Values</field>

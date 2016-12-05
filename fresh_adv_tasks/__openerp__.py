@@ -31,13 +31,14 @@ Fresh New Adv Tasks Module Project.
 
     'author': 'Tanmay @ Bista Solutions Inc.',
     'depends': [
-        'base','sale'
+        'base','sale','mrp'
     ],
     'data': [
         'views/sale_order_inherit_view.xml',
         'views/sale_order_confirm_wizard_view.xml',
         'views/sale_order_line_print_view.xml',
         'views/purchase_order_wizard_view.xml',
+        'views/bom_sale_order_line_view.xml',
     ],
 
     'installable': True,

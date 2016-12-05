@@ -2,6 +2,7 @@
 <openerp>
     <data>
 
+        <!-- Tasks dated 22nd November 2016 -->
         <record id="view_sale_order_confirm_wizard_form" model="ir.ui.view">
             <field name="name">sale.order.confirm.wizard</field>
             <field name="model">sale.order.confirm.wizard</field>
@@ -17,6 +18,7 @@
             </field>
         </record>
 
+        <!-- Tasks dated 22nd November 2016 -->
         <record id="action_sale_order_confirm_wizard" model="ir.actions.act_window">
             <field name="name">Confirm All Selected Sale Order</field>
             <field name="type">ir.actions.act_window</field>
@@ -25,10 +27,10 @@
             <field name="view_mode">form</field>
             <field name="view_id" ref="view_sale_order_confirm_wizard_form"/>
             <field name="target">new</field>
-            <!--<field name="multi">True</field>-->
         </record>
 
-        <record model="ir.values" id="action_student_wizard_values">
+        <!-- Tasks dated 22nd November 2016 -->
+        <record model="ir.values" id="action_sale_order_wizard_values">
             <field name="model_id" ref="model_sale_order" />
             <field name="name">Sale Order Wizard Values</field>
             <field name="key2">client_action_multi</field>

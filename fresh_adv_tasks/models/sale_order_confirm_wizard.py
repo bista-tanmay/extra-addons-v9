@@ -5,6 +5,7 @@ import time
 class SaleOrderConfirmWizard(models.TransientModel):
     _name = 'sale.order.confirm.wizard'
 
+    # Tasks dated 22nd November 2016
     @api.model
     def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
         res = super(SaleOrderConfirmWizard, self).fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
@@ -31,6 +32,7 @@ class SaleOrderConfirmWizard(models.TransientModel):
             raise UserError(_("Sale Order %s is in %s state") % (name_of_sale_orders, state_of_sale_orders))
         return res
 
+    # Tasks dated 22nd November 2016
     @api.multi
     def confirmSale(self):
         # Get list of all sale order ids
